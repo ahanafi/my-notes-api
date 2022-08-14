@@ -13,4 +13,13 @@ class Note extends Model
     protected $fillable = [
         'user_id', 'title', 'body', 'is_archived'
     ];
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeArchived($query): mixed
+    {
+        return $query->where('is_archived', 1);
+    }
 }

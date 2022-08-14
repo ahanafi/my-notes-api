@@ -6,7 +6,6 @@ use App\Http\Requests\StoreNoteRequest;
 use App\Http\Resources\NoteResource;
 use App\Models\Note;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
@@ -18,6 +17,17 @@ class NoteController extends Controller
     public function index()
     {
         $notes = Note::paginate(10);
+        return $this->handleResponse(NoteResource::collection($notes));
+    }
+
+    /**
+     * Get All archived notes
+     *
+     * @return JsonResponse
+     */
+    public function archived()
+    {
+        $notes = Note::archived()->paginate(10);
         return $this->handleResponse(NoteResource::collection($notes));
     }
 

@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')
             return $request->user();
         });
 
+        Route::get('/notes/archived', [NoteController::class, 'archived'])->name('note.archived');
         Route::resource('notes', NoteController::class)->except(['edit', 'create']);
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
