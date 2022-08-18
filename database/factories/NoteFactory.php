@@ -25,8 +25,8 @@ class NoteFactory extends Factory
 
         return [
             'user_id' => $user->id,
-            'title' => fake()->title(),
-            'body' => fake()->realText(300),
+            'title' => fake()->sentence(8),
+            'body' => fake()->paragraph(15),
             'is_archived' => fake()->boolean()
         ];
     }
