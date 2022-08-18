@@ -15,11 +15,11 @@ trait ResponseHandler {
     {
         $response = [
             'success' => true,
-            'data' => $results,
+            'data' => $results->resource ?? $results,
             'message' => $message
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response);
     }
 
     /**
