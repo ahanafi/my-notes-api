@@ -16,7 +16,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::paginate(10);
+        $notes = Note::archived(false)->paginate(10);
         return $this->handleResponse(NoteResource::collection($notes));
     }
 
@@ -27,7 +27,7 @@ class NoteController extends Controller
      */
     public function archived()
     {
-        $notes = Note::archived()->paginate(10);
+        $notes = Note::archived(true)->paginate(10);
         return $this->handleResponse(NoteResource::collection($notes));
     }
 

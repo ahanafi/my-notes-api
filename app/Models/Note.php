@@ -16,10 +16,11 @@ class Note extends Model
 
     /**
      * @param $query
+     * @param $isArchived
      * @return mixed
      */
-    public function scopeArchived($query): mixed
+    public function scopeArchived($query, $isArchived): mixed
     {
-        return $query->where('is_archived', 1);
+        return $query->where('is_archived', $isArchived ? 1 : 0);
     }
 }
